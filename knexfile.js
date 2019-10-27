@@ -24,6 +24,8 @@ module.exports = {
   test: Object.assign({
     connection: {
       database: 'abet_system_test'
+      user: 'postgres',
+      password: 'password'
     },
     seeds: {
       directory: './src/test/seeds'
