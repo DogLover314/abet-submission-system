@@ -23,7 +23,7 @@ module.exports = {
 
   test: Object.assign({
     connection: {
-      database: 'abet_system_test'
+      database: 'abet_system_test',
       user: 'postgres',
       password: 'password'
     },
