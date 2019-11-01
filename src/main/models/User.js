@@ -35,8 +35,8 @@ class User extends Model {
     };
   }
 
-  static get username() {
-    return this["linkblue_username"];
+  get username() {
+    return [this['linkblue_username']];
   }
 
 }
