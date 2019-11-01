@@ -34,6 +34,11 @@ class User extends Model {
     return {
     };
   }
+
+  static get username() {
+    return this["linkblue_username"];
+  }
+
 }
 
 module.exports = User;
