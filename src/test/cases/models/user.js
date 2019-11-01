@@ -39,12 +39,5 @@ describe('Model - User', () => {
 
 	})
 
-	describe('functions', () => {
-		it('A user is in the database', async () => {
-			const slo = await User.query().findById(1);
-
-			expect(slo.username).to.deep.equal(["user"]);
-		})
-	})
 
 })
