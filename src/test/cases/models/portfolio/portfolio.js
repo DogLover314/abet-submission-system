@@ -19,7 +19,6 @@ describe('Model - CoursePortfolio', () => {
 				year: 2019
 			})
 		})
-
 	})
 
 	describe('relations', () => {
@@ -56,6 +55,31 @@ describe('Model - CoursePortfolio', () => {
 			expect(outcomes).to.have.length(1)
 		})
 
+	})
+
+	describe('functions', () => {
+		it('gets the date', async () => {
+			const slo = await CoursePortfolio.query().findById(1)
+
+			expect(slo.date).to.deep.equal([1, 2019])
+		})
+
+		it('gets the department id', async () => {
+			const portfolio = await CoursePortfolio.query().findById(1)
+			const result = await portfolio.getDepartmentId()
+
+			expect(result).to.equal(1)
+		})
+
+		it('Get all portfolios in the department of the current portfolio', async () => {
+			const portfolio = await CoursePortfolio.query().findById(1)
+
+			const result = await portfolio.getAllPortfoliosInDepartment()
+
+			expect(result).to.deep.equal([
+				portfolio
+			])
+		})
 	})
 
 })

@@ -81,6 +81,33 @@ class CoursePortfolio extends Model {
 			}
 		};
 	}
+
+	get date() {
+		return [this["semester_term_id"], this["year"]];
+	}
+
+	get scores() {
+		return [this.scores]
+	}
+
+	async getDepartmentId() {
+		const Course = require('../../../main/models/Course')
+		const object = await Course.query().findById(this.course_id)
+		//const obj2 = Course.query().select("*").where({id: this.course_id})
+		
+		return (object['department_id'])
+	}
+
+	async getAllPortfoliosInDepartment() {
+		const Course = require('../../../main/models/Course')
+
+		const depNum = await this.getDepartmentId()
+		var allCourseIds = await Course.query().select("id").where({department_id: depNum})
+		allCourseIds = allCourseIds.map(value => value.id)
+		const result = await CoursePortfolio.query().findByIds(allCourseIds)
+
+		return result
+	}
 }
 
 module.exports = CoursePortfolio;
