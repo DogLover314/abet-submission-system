@@ -96,6 +96,12 @@ describe('Model - CoursePortfolio', () => {
 				portfolio
 			])
 		})
+		
+		it('gets num of students', async ()=>  {
+			const slo = await CoursePortfolio.query().findById(1)
+	
+			expect(slo.numStudents).to.deep.equal([5])
+		})
 
 	})
 

@@ -126,6 +126,11 @@ class CoursePortfolio extends Model {
 
 		return result
 	}
+
+	get numStudents(){
+		return [this['num_students']];
+		}
+	
 }
 
 module.exports = CoursePortfolio;
