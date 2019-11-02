@@ -111,13 +111,14 @@ class CoursePortfolio extends Model {
 
 	async getInstructorName() {
 		const User = require('../../../main/models/User')
-		const object = await User.query().findById(this.instructor_id)
-
+		const object = await User.query()
+		.findOne({ id: this.instructor_id })
+		
 		return (object['linkblue_username'])
 	}
 
 	async getAllPortfoliosByInstructor() {
-		const User = require('../../../main/models/Course')
+		const User = require('../../../main/models/User')
 
 		const InstrName = await this.getInstructorName()
 		var allInstructorNames = await User.query().select("id").where({linkblue_username: InstrName})
