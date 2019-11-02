@@ -80,6 +80,23 @@ describe('Model - CoursePortfolio', () => {
 				portfolio
 			])
 		})
+
+		it('get the instructor name', async () => {
+			const portfolio = await CoursePortfolio.query().findById(1)
+			const result = await portfolio.getInstructorName()
+
+			expect(result).to.equal('user')
+		})
+
+		it('Get all portfolios by Instructor name', async () => {
+			const portfolio = await CoursePortfolio.query().findById(1)
+			const result = await portfolio.getAllPortfoliosByInstructor()
+
+			expect(result).to.deep.equal([
+				portfolio
+			])
+		})
+
 	})
 
 })
