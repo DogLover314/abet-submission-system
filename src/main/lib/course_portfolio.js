@@ -63,9 +63,5 @@ module.exports.get = async (portfolio_id) => {
 module.exports.get_from_course = async (course_id) => {
 	portfolio = await Portfolio.query().where({course_id: course_id})
 
-	if (portfolio == null)
-		return 1
-
-	else
-		return portfolio
+	return portfolio
 }
