@@ -223,6 +223,32 @@ describe('Lib - CoursePortfolio', () => {
 			})
 		})
 
+		it("with a course_id that exists", async () => {
+			//const CoursePortfolio = require('../../../main/models/CoursePortfolio')
+
+			result = await course_portfolio.get_from_course(1)
+
+			expect(result).to.deep.equal([{
+				id: 1,
+				course_id: 1,
+				instructor_id: 1, 
+				num_students: 5,
+				section: 1,
+				semester_term_id: 1,
+				year: 2019
+			}])
+
+		})
+
+		it("with a course_id that has no portfolios", async () => {
+			//const CoursePortfolio = require('../../../main/models/CoursePortfolio')
+
+			result = await course_portfolio.get_from_course(2)
+
+			expect(result).to.deep.equal([])
+
+		})
+
 	})
 
 })
