@@ -59,3 +59,9 @@ module.exports.get = async (portfolio_id) => {
 
 	return portfolio
 }
+
+module.exports.get_from_course = async (course_id) => {
+	portfolio = await Portfolio.query().where({course_id: course_id})
+
+	return portfolio
+}
