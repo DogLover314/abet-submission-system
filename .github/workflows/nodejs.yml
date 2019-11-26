@@ -1,41 +1,39 @@
-name: Node CI		
+name: Node CI
 
-on: [push]		
+on: [push]
 
-jobs:		
-  build:		
+jobs:
+  build:
 
-    runs-on: ubuntu-latest		
+    runs-on: ubuntu-latest
 
-    steps:		
-    - name: Checking out most recent version of code		
-      uses: actions/checkout@v1		
-
-    - name: Using Node.js 10.x		
-      uses: actions/setup-node@v1		
-      with:		
-        node-version: 10.x		
-
-    - name: Clean npm install		
-      run: npm ci	
-
-    - name: Setup PostgreSQL	
-      uses: Harmon758/postgresql-action@v1.0.0	
-      with:	
-        # Version of PostgreSQL to use	
-        postgresql version: 12 # optional, default is latest	
-        # POSTGRES_DB - name for the default database that is created	
-        postgresql db: abet_system_dev # optional, default is 	
-        # POSTGRES_USER - create the specified user with superuser power	
-        postgresql user: postgres # optional, default is 	
-        # POSTGRES_PASSWORD - superuser password	
-        postgresql password: password # optional, default is	
-
+    steps:
+    - name: Checking out most recent version of code
+      uses: actions/checkout@v1
+      
+    - name: Using Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+        
+    - name: Clean npm install
+      run: npm ci
+    
+    - name: Setup PostgreSQL
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        # Version of PostgreSQL to use
+        postgresql version: 12 # optional, default is latest
+        # POSTGRES_DB - name for the default database that is created
+        postgresql db: abet_system_dev # optional, default is 
+        # POSTGRES_USER - create the specified user with superuser power
+        postgresql user: postgres # optional, default is 
+        # POSTGRES_PASSWORD - superuser password
+        postgresql password: password # optional, default is 
+        
+        
     - name: Create abet_system_test
       run: createdb abet_system_test
-
-    - name: Seed databases	
-      run: npm run setup_db	
-
-    - name: Unit tests		
+          
+    - name: Unit tests
       run: npm run test
