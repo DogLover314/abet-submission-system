@@ -19,7 +19,7 @@ jobs:
     - name: Clean npm install
       run: npm ci
     
-    - name: Setup PostgreSQL
+    - name: Create abet_system_test
       uses: Harmon758/postgresql-action@v1.0.0
       with:
         # Version of PostgreSQL to use
@@ -31,6 +31,15 @@ jobs:
         # POSTGRES_PASSWORD - superuser password
         postgresql password: password # optional, default is 
         
+    - name: Create abet_system_dev
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        # POSTGRES_DB - name for the default database that is created
+        postgresql db: abet_system_dev # optional, default is 
+        # POSTGRES_USER - create the specified user with superuser power
+        postgresql user: postgres # optional, default is 
+        # POSTGRES_PASSWORD - superuser password
+        postgresql password: password # optional, default is         
         
     # - name: Create abet_system_test
     #  run: createdb abet_system_test
