@@ -5,7 +5,7 @@ const sinon = require('sinon')
 // we use a sandbox so that we can easily restore all stubs created in that sandbox
 const sandbox = sinon.createSandbox();
 
-describe('Lib - slo_index', () => {
+describe('Lib - SLO Index', () => {
 
 	describe('exists', () => {
 
@@ -19,7 +19,7 @@ describe('Lib - slo_index', () => {
 		it('returns true if the SlO exists', async () => {
 
             // Act
-            const result = await slo_lib.exists(2)
+            const result = await slo_lib.exists(5)
             expect(result).to.be.true
 
         })

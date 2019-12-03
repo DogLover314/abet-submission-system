@@ -6,7 +6,7 @@ const sinon = require('sinon')
 // we use a sandbox so that we can easily restore all stubs created in that sandbox
 const sandbox = sinon.createSandbox();
 
-describe('Lib - portfolio_slo', () => {
+describe('Lib - Portfolio SLO', () => {
 
 	describe('exists', () => {
 
