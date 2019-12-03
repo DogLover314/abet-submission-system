@@ -65,3 +65,20 @@ module.exports.get_from_course = async (course_id) => {
 
 	return portfolio
 }
+
+module.exports.exists = async (course_id,section,semester_term_id,year) => {
+	const portEval = await Portfolio.query().findOne({
+		course_id: course_id,
+		section: section,
+		semester_term_id: semester_term_id,
+		year: year
+	})
+	
+    if(portEval == null){
+        return false
+    }
+    else {
+        return true
+	}
+
+}

@@ -249,6 +249,18 @@ describe('Lib - CoursePortfolio', () => {
 
 		})
 
+		it("Returns true if the portfolio exists", async () => {
+			result = await course_portfolio.exists(1,1,1,2019)
+
+			expect(result).to.be.true
+		})
+
+		it("Returns false if the portfolio doesn't exist", async () => {
+			result = await course_portfolio.exists(1,1,2,2019)
+
+			expect(result).to.be.false
+		})
+
 	})
 
 })
