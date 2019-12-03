@@ -9,7 +9,7 @@ describe('Lib - slo_index', () => {
 
 	describe('exists', () => {
 
-		// this is ran after each unit test
+		// this is ran after each unit test w
 		afterEach(() => {
 			// this is needed to restore the CoursePortfolio model back to it's original state
 			// we don't want to break all future unit tests
