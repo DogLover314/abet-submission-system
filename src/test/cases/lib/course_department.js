@@ -11,7 +11,7 @@ describe('Lib - Course Department', () => {
         })
 
         it('Returns true if department num and course num is found', async () => {
-            const result = await course_lib.exists("5","498")
+            const result = await course_lib.exists("1","498")
             expect(result).to.be.true
         })
 

@@ -1,4 +1,4 @@
-const slo_lib = require('../../../main/lib/student_learning_outcomes')
+const slo_lib = require('../../../main/lib/slo_index')
 const { expect } = require('../../chai')
 const sinon = require('sinon')
 
@@ -19,7 +19,7 @@ describe('Lib - SLO Index', () => {
 		it('returns true if the SlO exists', async () => {
 
             // Act
-            const result = await slo_lib.exists(5)
+            const result = await slo_lib.exists(2)
             expect(result).to.be.true
 
         })
@@ -27,7 +27,7 @@ describe('Lib - SLO Index', () => {
         it('returns false if the SLO does not exist', async () => {
 
             // Act
-            const result = await slo_lib.exists(2)
+            const result = await slo_lib.exists(1)
             // Assert
            expect(result).to.be.false
 
