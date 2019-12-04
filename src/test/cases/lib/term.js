@@ -12,7 +12,7 @@ describe('Lib - Term', () => {
 
         it('Returns an array of options', async () => {
             const result = await term_lib.getOptions(1)
-            expect(result).to.equal(['fall','spring','summer 1','summer 2','winter'])
+            expect(result).to.deep.equal(['fall','spring','summer 1','summer 2','winter'])
         })
 
     })
