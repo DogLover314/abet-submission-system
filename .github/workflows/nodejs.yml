@@ -3,15 +3,6 @@ name: Node CI
 on: [push]
 
 jobs:
-  symfony:
-    name: Symfony PHP 7.1
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:9.6
-        options: --name=postgres
-        ports:
-          - 5432/tcp
   build:
   
 
