@@ -1,0 +1,42 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm ci
+      env:
+        CI: true
+
+    - name: Setup PostgreSQL
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        # Version of PostgreSQL to use
+        postgresql version: '11' # optional, default is latest
+        # POSTGRES_DB - name for the default database that is created
+        postgresql db: abet_system_test # optional, default is 
+        # POSTGRES_USER - create the specified user with superuser power
+        postgresql user: postgresql # optional, default is 
+        # POSTGRES_PASSWORD - superuser password
+        postgresql password: password # optional, default is   
+        
+    - name: Seed databases
+      run: npm run setup_db
+      
+    - name: Run unit tests
+      run: npm run test
